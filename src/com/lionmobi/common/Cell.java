@@ -1,4 +1,4 @@
-package com.lionmobi;
+package com.lionmobi.common;
 
 
 public class Cell {

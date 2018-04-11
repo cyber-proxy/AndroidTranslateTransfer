@@ -1,7 +1,6 @@
-package com.lionmobi;
+package com.lionmobi.toXML;
 
-
-public class Main {
+public class ToXML {
 	
 	public static void  runTask(String dataPath,String rootPath) throws Exception{
 		new Translation().doTranslate(dataPath, rootPath);

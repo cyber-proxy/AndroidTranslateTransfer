@@ -1,7 +1,9 @@
-package com.lionmobi;
+package com.lionmobi.toXML;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.lionmobi.common.Cell;
 
 public class Row {
     private List<Cell> cells;

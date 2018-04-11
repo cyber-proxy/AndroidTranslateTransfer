@@ -1,4 +1,4 @@
-package com.lionmobi;
+package com.lionmobi.toXML;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,22 +10,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.lionmobi.common.Cell;
+
 import net.sf.json.JSONObject;
 
 public class Translation {
 	private Map<Integer, String> languageMapper = new HashMap<Integer, String>();
 	private static final String PATH_FORMATTER = "\\values-%s\\strings.xml";
 	private String ROOT;
-	private CompleteLanaguageXml xmlCompletor;
 
-	
-	public void doTranslate(String filePath, String targetDirectory)
-			throws Exception {
+	public void doTranslate(String filePath, String targetDirectory) throws Exception {
 		String csn = Charset.defaultCharset().name();
-		System.out.println("charset -> " +csn);
-		
+		System.out.println("charset -> " + csn);
+
 		ROOT = findRootPath(targetDirectory);
-		xmlCompletor = new CompleteLanaguageXml();
 
 		ExcelUtils.resolve(new RowHandler() {
 
@@ -45,7 +43,7 @@ public class Translation {
 				return false;
 			}
 
-		}, new FileInputStream(new File(filePath)));	
+		}, new FileInputStream(new File(filePath)));
 	}
 
 	/**
@@ -71,7 +69,7 @@ public class Translation {
 			String key = cells.get(0).getContent().trim();
 			// should not trim or toLowerCase
 			String value = cells.get(i).getContent();
-			xmlCompletor.complete(targetXml, key, value);
+			CompleteLanaguageXml.complete(targetXml, key, value);
 			System.out.println(language + "  -  " + key + "  -   " + value);
 		}
 	}
@@ -106,8 +104,7 @@ public class Translation {
 		}
 		title = title.toLowerCase().trim();
 		StringBuilder sb = new StringBuilder();
-		File langaugeConfig = new File(new File("").getAbsolutePath()
-				+ "/conf/language.cfg");
+		File langaugeConfig = new File(new File("").getAbsolutePath() + "/conf/language.cfg");
 		BufferedReader br = null;
 		try {
 			br = new BufferedReader(new FileReader(langaugeConfig));
@@ -143,8 +140,7 @@ public class Translation {
 		File root = new File(directory);
 		if (!root.isDirectory()) {
 			return null;
-		} else if (root.getAbsolutePath().endsWith(
-				"src" + File.separator + "main" + File.separator + "res")) {
+		} else if (root.getAbsolutePath().endsWith("src" + File.separator + "main" + File.separator + "res")) {
 			return root.getAbsolutePath();
 		}
 		File[] listFiles = root.listFiles();

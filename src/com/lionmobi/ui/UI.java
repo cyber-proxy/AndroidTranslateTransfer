@@ -1,4 +1,4 @@
-package com.lionmobi;
+package com.lionmobi.ui;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Console {
+import com.lionmobi.toXML.ToXML;
+
+public class UI {
 
 	private JFrame frame;
 
@@ -24,7 +26,7 @@ public class Console {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Console window = new Console();
+					UI window = new UI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +38,7 @@ public class Console {
 	/**
 	 * Create the application.
 	 */
-	public Console() {
+	public UI() {
 		initialize();
 	}
 
@@ -89,7 +91,7 @@ public class Console {
 					return;
 				}
 				try {
-					Main.runTask(excel, root);
+					ToXML.runTask(excel, root);
 					JOptionPane.showConfirmDialog(null, "操作完成", "", JOptionPane.CLOSED_OPTION);
 				} catch (Exception e1) {
 					e1.printStackTrace();

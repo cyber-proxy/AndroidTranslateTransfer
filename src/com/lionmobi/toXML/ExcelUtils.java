@@ -1,4 +1,4 @@
-package com.lionmobi;
+package com.lionmobi.toXML;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,9 +16,9 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelUtils {
+import com.lionmobi.common.Cell;
 
-	
+public class ExcelUtils {	
 
     /**
      * ����EXCEL
